@@ -178,6 +178,25 @@ $(function() {
 			console.log(this.did);
 			console.log(this.sid);
 			console.log(stop);
+
+			$.ajax({ 
+	        url: _self.config.rest+'stop/'+this.rid+'/'+this.did+'/'+this.sid+'/'+stop
+	        ,data: {  }
+	      })
+	      .done(function(obj) {
+	      	var api = obj;
+	      	api.params = _self.params;
+	      	console.log(api);
+	        //var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
+	        //$('#stand-app').html(tmpl( {api:api} ));
+	      })
+	      .fail(function() {
+	      	error = { msg: 'Could not load stop.' }
+	      	_self.throwError(error);
+	      })
+	      .always(function() {
+	      });
+
 		}
 
 
