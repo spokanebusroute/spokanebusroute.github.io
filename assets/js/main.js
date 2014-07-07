@@ -130,7 +130,7 @@ $(function() {
 
 			if ( rid ) { 
 
-				var api = {}
+				var api = { rid:rid }
 				var tmpl = Handlebars.compile( $('#stand-loading-route-tmpl').html() );
 	      $('#stand-app').html(tmpl( {api:api} ));
 
