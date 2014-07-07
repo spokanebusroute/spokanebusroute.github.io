@@ -70,10 +70,10 @@
     		<div class="col-md-6">
 		    	<div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
 					  <label class="btn btn-success active">
-					    <input type="radio" name="stand-direction" id="stand-direction-inbound" value="inbound" checked> <em>To</em> Downtown
+					    <input type="radio" name="stand-direction" id="stand-direction-inbound" value="1" checked> <em>To</em> Downtown
 					  </label>
 					  <label class="btn btn-success">
-					    <input type="radio" name="stand-direction" id="stand-direction-outbound" value="outbound"> <em>From</em> Downtown
+					    <input type="radio" name="stand-direction" id="stand-direction-outbound" value="0"> <em>From</em> Downtown
 					  </label>
 					</div>
 				</div><!-- /.col -->
@@ -81,13 +81,13 @@
 
 				  <div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
 					  <label class="btn btn-primary {{#if today.weekday}}active{{/if}}">
-					    <input type="radio" name="stand-service" id="stand-service-weekday" {{#if today.weekday}}checked{{/if}}> Weekdays
+					    <input type="radio" name="stand-service" id="stand-service-weekday" value="1" {{#if today.weekday}}checked{{/if}}> Weekdays
 					  </label>
 					  <label class="btn btn-primary {{#if today.saturday}}active{{/if}}">
-					    <input type="radio" name="stand-service" id="stand-service-saturday" {{#if today.saturday}}checked{{/if}}> Saturdays
+					    <input type="radio" name="stand-service" id="stand-service-saturday" value="2" {{#if today.saturday}}checked{{/if}}> Saturdays
 					  </label>
 					  <label class="btn btn-primary {{#if today.sunday}}active{{/if}}">
-					    <input type="radio" name="stand-service" id="stand-service-sunday" {{#if today.sunday}}checked{{/if}}> Sundays<span class="hidden-xs">/Holidays</span>
+					    <input type="radio" name="stand-service" id="stand-service-sunday" value="3" {{#if today.sunday}}checked{{/if}}> Sundays<span class="hidden-xs">/Holidays</span>
 					  </label>
 					</div>
 

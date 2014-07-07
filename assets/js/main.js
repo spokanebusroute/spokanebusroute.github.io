@@ -34,6 +34,10 @@ $(function() {
 				console.log($(this).val());
 			});
 
+			$('body').on('change', 'input[name=stand-service]:radio', function(e) {
+				console.log($(this).val());
+			});
+
 			
 		},
 
