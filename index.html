@@ -134,15 +134,20 @@
 			      	<ul class="list-unstyled">
 			    		{{#each times}}
 			    			<li>
-			    				{{#if major_stop}}<h3>{{/if}}
-			    					<b>{{departure_time_formatted}}</b> 
-				    				<small>{{stop_name}}</small>
-			    				{{#if major_stop}}</h3>{{/if}}
-			    				{{#if major_stop}}
+			    			{{#if major_stop}}
+			    				<h3>
+			    					{{departure_time_formatted}}
+			    					<small>{{stop_name}}</small>
+			    				</h3>
+			    				<p>
 			    					<a href="#" class="btn btn-block btn-danger">
 			    						All times for this stop
 			    					</a>
-			    				{{/if}}
+			    				</p>
+			    			{{else}}
+			    				<b>{{departure_time_formatted}}</b> 
+			    				<a href="#"><small>{{stop_name}}</small></a>
+			    			{{/if}}
 			    			</li>
 			    		{{/each}}
 			    		</ul>
