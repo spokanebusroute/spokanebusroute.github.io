@@ -37,6 +37,10 @@ $(function() {
 				_self.getRoute(hash.substring(1));
 			});
 
+			$('#stop-modal').on('show.bs.modal', function (e) {
+			  console.log('modal');
+			});
+
 			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
 				//console.log($(this).val());
 				_self.did = $(this).val();

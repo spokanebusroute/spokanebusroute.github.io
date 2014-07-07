@@ -146,13 +146,10 @@
 			    				</h3>
 			    				{{#unless last_stop}}
 			    				<p>
-			    					<a href="#stop-modal" data-toggle="modal" class="btn btn-block btn-danger">
+			    					<a href="#stop-modal" data-stop-id="{{stop_id}}" data-toggle="modal" class="btn btn-block btn-danger">
 			    						Show times for this stop
 			    						<small class="glyphicon glyphicon-share"></small>
 			    					</a>
-			    					{{stop_id}}
-			    					<br>
-			    					{{../../route_id}}
 			    				</p>
 			    				{{/unless}}
 			    			{{else}}
