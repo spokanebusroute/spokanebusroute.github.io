@@ -81,13 +81,13 @@
 				<div class="col-md-6">
 
 				  <div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
-					  <label class="btn btn-primary active">
+					  <label class="btn btn-primary {{#if today.weekday}}active{{/if}}">
 					    <input type="radio" name="stand-service" id="stand-service-weekday" {{#if today.weekday}}checked{{/if}}> Weekdays
 					  </label>
-					  <label class="btn btn-primary">
+					  <label class="btn btn-primary {{#if today.weekday}}active{{/if}}">
 					    <input type="radio" name="stand-service" id="stand-service-saturday" {{#if today.saturday}}checked{{/if}}> Saturdays
 					  </label>
-					  <label class="btn btn-primary">
+					  <label class="btn btn-primary {{#if today.weekday}}active{{/if}}">
 					    <input type="radio" name="stand-service" id="stand-service-sunday" {{#if today.sunday}}checked{{/if}}> Sundays<span class="hidden-xs">/Holidays</span>
 					  </label>
 					</div>
