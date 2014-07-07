@@ -171,7 +171,7 @@ $(function() {
 
 		getStopTimes: function(stop) {
 			var api = {  }
-			var tmpl = Handlebars.compile( $('#stand-loading-stop-tmpl').html() );
+			var tmpl = Handlebars.compile( $('#stand-loading-stop-times-tmpl').html() );
 	    $('#stop-times').html(tmpl( {api:api} ));
 
 			console.log(this.rid);
@@ -184,11 +184,11 @@ $(function() {
 	        ,data: {  }
 	      })
 	      .done(function(obj) {
-	      	var api = obj;
+	      	var api = {};
+	      	api.times = obj;
 	      	api.params = _self.params;
-	      	console.log(api);
-	        //var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
-	        //$('#stand-app').html(tmpl( {api:api} ));
+	        var tmpl = Handlebars.compile( $('#stand-stop-times-tmpl').html() );
+	        $('#stop-times').html(tmpl( {api:api} ));
 	      })
 	      .fail(function() {
 	      	error = { msg: 'Could not load stop.' }
