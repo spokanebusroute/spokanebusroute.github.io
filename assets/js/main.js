@@ -1,7 +1,7 @@
 $(function() {
 	
 
-	$.ajaxSetup({ dataType:'jsonp' })
+	$.ajaxSetup({ dataType:'jsonp' });
 
 	stand = {
 
