@@ -146,7 +146,7 @@
 			    				</h3>
 			    				{{#unless last_stop}}
 			    				<p>
-			    					<a href="#stop-modal" class="btn btn-block btn-danger">
+			    					<a href="#stop-modal" data-toggle="modal" class="btn btn-block btn-danger">
 			    						Show times for this stop
 			    						<small class="glyphicon glyphicon-share"></small>
 			    					</a>
@@ -154,7 +154,7 @@
 			    				{{/unless}}
 			    			{{else}}
 			    				<b>{{departure_time_formatted}}</b> 
-			    				<a href="#stop-modal"><small>{{stop_name}} <small class="glyphicon glyphicon-share text-muted"></small></small></a>
+			    				<a href="#stop-modal" data-toggle="modal"><small>{{stop_name}} <small class="glyphicon glyphicon-share text-muted"></small></small></a>
 			    			{{/if}}
 			    			</li>
 			    		{{/each}}
