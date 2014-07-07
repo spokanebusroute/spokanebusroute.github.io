@@ -10,7 +10,7 @@ $(function() {
 			_self = this;
 
 			this.config = {
-				rest: 'http://stand.seangirard.com/api/'
+				rest: 'http://sta.seangirard.com/api/'
 			}
 		
 			this.bindEvents();
