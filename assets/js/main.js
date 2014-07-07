@@ -174,18 +174,12 @@ $(function() {
 			var tmpl = Handlebars.compile( $('#stand-loading-stop-times-tmpl').html() );
 	    $('#stop-times').html(tmpl( {api:api} ));
 
-			console.log(this.rid);
-			console.log(this.did);
-			console.log(this.sid);
-			console.log(stop);
-
 			$.ajax({ 
 	        url: _self.config.rest+'stop/'+this.rid+'/'+this.did+'/'+this.sid+'/'+stop
 	        ,data: {  }
 	      })
 	      .done(function(obj) {
-	      	var api = {};
-	      	api.times = obj;
+	      	var api = obj;
 	      	api.params = _self.params;
 	        var tmpl = Handlebars.compile( $('#stand-stop-times-tmpl').html() );
 	        $('#stop-times').html(tmpl( {api:api} ));

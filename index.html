@@ -280,7 +280,19 @@
   	</script> 
 
   	<script id="stand-stop-times-tmpl" type="text/x-handlebars-template">
-  	Stop times.
+  	{{#with api}}
+  		<h2>
+  			{{route.route_short_name}} <small>route.route_long_name</small>
+  		</h2>
+  		<h3>{{stop.stop_name}}</h3>
+  		<ul class="list-unstyled">
+  		{{#each times}}
+  			<li>
+  				{{departure_time_formatted}}
+  			</li>
+  		{{/each}}
+  		</ul>
+  	{{/with}}
   	</script> 
 
 
