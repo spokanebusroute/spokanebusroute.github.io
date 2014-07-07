@@ -62,8 +62,7 @@ $(function() {
 		loadTools: function() {
 			var api = {
       						params: _self.params
-      					}
-      console.log(api);					
+      					}				
       var tmpl = Handlebars.compile( $('#stand-tools-tmpl').html() );
       $('#stand-tools').html(tmpl( {api:api} ));
 		},
