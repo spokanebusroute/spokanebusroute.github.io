@@ -100,7 +100,7 @@
     	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
     	{{#each api}}
     		<a href="#{{route_short_name}}" style="text-align:left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" class="btn btn-lg btn-block btn-default stand-route">
-    			<small class="glyphicon glyphicon-time"></small> <b>{{route_short_name}}</b> - {{route_long_name}}</a>
+    			<b>{{route_short_name}}</b> <small>{{route_long_name}}</small></a>
     	{{/each}}
     	</script> 
 
@@ -123,6 +123,7 @@
 		          <span class="hidden-xs">{{trip_headsign}}</span>
 						</h4>			        
 		        <a class="btn btn-lg btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
+		          <small class="glyphicon glyphicon-time"></small>
 		          Timetable
 		          <span class="caret"></span>
 		        </a>
