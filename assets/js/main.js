@@ -65,7 +65,15 @@ $(function() {
 
       	var hash = window.location.hash;
       	if ( hash ) {
-      		_self.getRoute(hash.substring(1));
+      		switch ( hash ) {
+      			case 'help':
+      			case 'about':
+      			case 'disclaimer':
+      				break;
+      			default:
+      				_self.getRoute(hash.substring(1));
+      				break;
+      		}
       	} else {
       		_self.getRoutes();
       	}
