@@ -111,6 +111,9 @@
     		<small>{{route.route_long_name}}</small>
     	</h2>	
 
+    	<a href="{{route.route_url">Show route on STA website</a> 
+    	<span class="text-muted">&rarr;</a>
+
 	    <div class="panel-group" id="trips-accordion">
 	    {{#each trips}}
 	    	<div class="panel panel-warning">
@@ -139,12 +142,14 @@
 			    					{{departure_time_formatted}}
 			    					<small>{{stop_name}}</small>
 			    				</h3>
+			    				{{#unless last_stop}}
 			    				<p>
 			    					<a href="#" class="btn btn-block btn-danger">
 			    						Show times for this stop
 			    						<small class="glyphicon glyphicon-share"></small>
 			    					</a>
 			    				</p>
+			    				{{/unless}}
 			    			{{else}}
 			    				<b>{{departure_time_formatted}}</b> 
 			    				<a href="#"><small>{{stop_name}}</small></a>
