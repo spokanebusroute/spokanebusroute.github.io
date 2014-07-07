@@ -170,11 +170,14 @@ $(function() {
 		},
 
 		getStopTimes: function(stop) {
-			$('#stop-times').html('Loading stop times&hellip;');
+			var api = {  }
+			var tmpl = Handlebars.compile( $('#stand-loading-stop-tmpl').html() );
+	    $('#stop-times').html(tmpl( {api:api} ));
+
 			console.log(this.rid);
 			console.log(this.did);
 			console.log(this.sid);
-			console.log(this.stop);
+			console.log(stop);
 		}
 
 
