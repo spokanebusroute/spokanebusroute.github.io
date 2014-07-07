@@ -82,13 +82,13 @@
 
 				  <div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
 					  <label class="btn btn-primary active">
-					    <input type="radio" name="stand-service" id="stand-service-weekday" checked> Weekdays
+					    <input type="radio" name="stand-service" id="stand-service-weekday" {{#if today.weekday}}checked{{/if}}> Weekdays
 					  </label>
 					  <label class="btn btn-primary">
-					    <input type="radio" name="stand-service" id="stand-service-saturday"> Saturdays
+					    <input type="radio" name="stand-service" id="stand-service-saturday" {{#if today.saturday}}checked{{/if}}> Saturdays
 					  </label>
 					  <label class="btn btn-primary">
-					    <input type="radio" name="stand-service" id="stand-service-sunday"> Sundays<span class="hidden-xs">/Holidays</span>
+					    <input type="radio" name="stand-service" id="stand-service-sunday" {{#if today.sunday}}checked{{/if}}> Sundays<span class="hidden-xs">/Holidays</span>
 					  </label>
 					</div>
 
@@ -199,7 +199,7 @@
     <div class="container">
     	<p class="text-center text-muted">
     		Stand is <a href="http://github.com/seangirard">Sean's</a> idea.
-        <a href="http://spokanebusroute.github.com/spokanebusroute.github.io">Fork it on github</a>.
+        <a href="https://github.com/spokanebusroute/spokanebusroute.github.io">Fork it on github</a>.
     	</p>
     </div><!-- /.container -->
 
