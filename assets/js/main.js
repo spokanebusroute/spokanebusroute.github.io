@@ -117,7 +117,7 @@ $(function() {
 			if ( !this.did ) {
 				this.did = $('input[name=stand-direction]:radio').val();
 			}
-			if (this.sid) {
+			if (!this.sid) {
 				this.sid = $('input[name=stand-service]:radio').val();
 			}
 
