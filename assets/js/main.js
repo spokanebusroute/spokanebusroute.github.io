@@ -1,5 +1,8 @@
 $(function() {
 	
+
+	$.ajaxSetup({ dataType:'jsonp' })
+
 	stand = {
 
 		init: function() {
