@@ -69,6 +69,7 @@ $(function() {
       			case 'help':
       			case 'about':
       			case 'disclaimer':
+      			case 'stop-modal':
       				break;
       			default:
       				_self.getRoute(hash.substring(1));
