@@ -318,7 +318,8 @@ class SG_STA_GTFS {
 						*
 						FROM stop_times
 						WHERE trip_id IN ($tids) 
-						ORDER BY stop_sequence*100 -- fake a natsort
+						--ORDER BY stop_sequence*100 -- fake a natsort
+						ORDER BY departure_time*100
 					";
 		$q = $this->query($sql, $trips);
 		
