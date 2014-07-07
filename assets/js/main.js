@@ -100,7 +100,7 @@ $(function() {
       $('#stand-app').html(tmpl( {api:api} ));
 
 			$.ajax({ 
-        url: _self.config.rest+'timetable/'+rid
+        url: _self.config.rest+'timetable/'+rid+'/0'
         ,data: {  }
       })
       .done(function(obj) {
