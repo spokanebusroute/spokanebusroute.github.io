@@ -38,7 +38,8 @@ $(function() {
 			});
 
 			$('#stop-modal').on('show.bs.modal', function (e) {
-			  console.log(e.relatedTarget.data('stop-id'));
+				var $trigger = $(e.relatedTarget);
+			  console.log($trigger.data('stop-id'));
 			});
 
 			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
