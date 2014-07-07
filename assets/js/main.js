@@ -12,7 +12,10 @@ $(function() {
 			this.config = {
 				rest: 'http://bus.seangirard.com/api/'
 			}
-		
+
+			this.did = $('input[name=stand-direction]:radio').val();
+			this.sid = $('input[name=stand-service]:radio').val();
+
 			this.bindEvents();
 			this.loadParams();
 			
@@ -32,11 +35,13 @@ $(function() {
 
 			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
 				//console.log($(this).val());
+				_self.did = $(this).val();
 				_self.getRoute();
 			});
 
 			$('body').on('change', 'input[name=stand-service]:radio', function(e) {
 				//console.log($(this).val());
+				_self.sid = $(this).val();
 				_self.getRoute();
 			});
 
@@ -112,11 +117,8 @@ $(function() {
 				rid = this.rid;
 			}
 
-			var did = $('input[name=stand-direction]:radio').val();
-			var sid = $('input[name=stand-service]:radio').val();
-
-			console.log(did);
-			console.log(sid);
+			console.log(this.did);
+			console.log(this.sid);
 
 			if ( rid ) { 
 
