@@ -114,8 +114,12 @@ $(function() {
 				rid = this.rid;
 			}
 
-			this.did = $('input[name=stand-direction]:radio').val();
-			this.sid = $('input[name=stand-service]:radio').val();
+			if ( !this.did ) {
+				this.did = $('input[name=stand-direction]:radio').val();
+			}
+			if (this.sid) {
+				this.sid = $('input[name=stand-service]:radio').val();
+			}
 
 			console.log(this.did);
 			console.log(this.sid);
