@@ -30,6 +30,11 @@ $(function() {
 				_self.getRoute(hash.substring(1));
 			});
 
+			$('body').on('change', 'input[name=someRadioGroup]:radio', function(e) {
+				console.log($this.val());
+			});
+
+			
 		},
 
 		loadParams: function() {
@@ -100,7 +105,7 @@ $(function() {
       $('#stand-app').html(tmpl( {api:api} ));
 
 			$.ajax({ 
-        url: _self.config.rest+'timetable/'+rid+'/0'
+        url: _self.config.rest+'timetable/'+rid+'/1'
         ,data: {  }
       })
       .done(function(obj) {
