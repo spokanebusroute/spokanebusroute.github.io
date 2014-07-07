@@ -3,7 +3,7 @@ $(function() {
 
 	$.ajaxSetup({ dataType:'jsonp' });
 
-	stand = {
+	bus = {
 
 		init: function() {
 
@@ -21,17 +21,17 @@ $(function() {
 		},
 
 		splashScreen: function() {
-			var tmpl = Handlebars.compile( $('#stand-loading-routes-tmpl').html() );
-	     $('#stand-app').html(tmpl( {} ));
+			var tmpl = Handlebars.compile( $('#bus-loading-routes-tmpl').html() );
+	     $('#bus-app').html(tmpl( {} ));
 		},
 
 		throwError: function(error) {
-			var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
-       $('#stand-app').html(tmpl( {error:error} ));
+			var tmpl = Handlebars.compile( $('#bus-error-tmpl').html() );
+       $('#bus-app').html(tmpl( {error:error} ));
 		},
 
 		bindEvents: function() {
-			$('body').on('click', '.stand-route', function(e) {
+			$('body').on('click', '.bus-route', function(e) {
 				//e.preventDefault();
 				var hash = $(this).attr('href');
 				_self.getRoute(hash.substring(1));
@@ -42,13 +42,13 @@ $(function() {
 			  _self.getStopTimes($trigger.data('stop-id'));
 			});
 
-			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
+			$('body').on('change', 'input[name=bus-direction]:radio', function(e) {
 				//console.log($(this).val());
 				_self.did = $(this).val();
 				_self.getRoute();
 			});
 
-			$('body').on('change', 'input[name=stand-service]:radio', function(e) {
+			$('body').on('change', 'input[name=bus-service]:radio', function(e) {
 				//console.log($(this).val());
 				_self.sid = $(this).val();
 				_self.getRoute();
@@ -97,13 +97,13 @@ $(function() {
 			var api = {
       						params: _self.params
       					}				
-      var tmpl = Handlebars.compile( $('#stand-tools-tmpl').html() );
-      $('#stand-tools').html(tmpl( {api:api} ));
+      var tmpl = Handlebars.compile( $('#bus-tools-tmpl').html() );
+      $('#bus-tools').html(tmpl( {api:api} ));
 		},
 
 		showRoutes: function() {
-			var tmpl = Handlebars.compile( $('#stand-routes-tmpl').html() );
-      $('#stand-app').html(tmpl( {api:_self.config.routes} ));
+			var tmpl = Handlebars.compile( $('#bus-routes-tmpl').html() );
+      $('#bus-app').html(tmpl( {api:_self.config.routes} ));
 		},
 
 		getRoutes: function() {
@@ -136,17 +136,17 @@ $(function() {
 			}
 
 			if ( !this.did ) {
-				this.did = $('input[name=stand-direction]:radio').val();
+				this.did = $('input[name=bus-direction]:radio').val();
 			}
 			if (!this.sid) {
-				this.sid = $('input[name=stand-service]:radio').val();
+				this.sid = $('input[name=bus-service]:radio').val();
 			}
 
 			if ( rid ) { 
 
 				var api = { rid:rid }
-				var tmpl = Handlebars.compile( $('#stand-loading-route-tmpl').html() );
-	      $('#stand-app').html(tmpl( {api:api} ));
+				var tmpl = Handlebars.compile( $('#bus-loading-route-tmpl').html() );
+	      $('#bus-app').html(tmpl( {api:api} ));
 
 				$.ajax({ 
 	        url: _self.config.rest+'timetable/'+rid+'/'+this.did+'/'+this.sid
@@ -156,8 +156,8 @@ $(function() {
 	      	var api = obj;
 	      	api.params = _self.params;
 
-	        var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
-	        $('#stand-app').html(tmpl( {api:api} ));
+	        var tmpl = Handlebars.compile( $('#bus-route-tmpl').html() );
+	        $('#bus-app').html(tmpl( {api:api} ));
 	      })
 	      .fail(function() {
 	      	error = { msg: 'Could not load route.' }
@@ -171,7 +171,7 @@ $(function() {
 
 		getStopTimes: function(stop) {
 			var api = {  }
-			var tmpl = Handlebars.compile( $('#stand-loading-stop-times-tmpl').html() );
+			var tmpl = Handlebars.compile( $('#bus-loading-stop-times-tmpl').html() );
 	    $('#stop-times').html(tmpl( {api:api} ));
 	    $('#stop-times-title').html('');
 
@@ -182,9 +182,9 @@ $(function() {
 	      .done(function(obj) {
 	      	var api = obj;
 	      	api.params = _self.params;
-	        var tmpl = Handlebars.compile( $('#stand-stop-times-tmpl').html() );
+	        var tmpl = Handlebars.compile( $('#bus-stop-times-tmpl').html() );
 	        $('#stop-times').html(tmpl( {api:api} ));
-	        var tmpl = Handlebars.compile( $('#stand-stop-times-title-tmpl').html() );
+	        var tmpl = Handlebars.compile( $('#bus-stop-times-title-tmpl').html() );
 	        $('#stop-times-title').html(tmpl( {api:api} ));
 	      })
 	      .fail(function() {
@@ -199,34 +199,6 @@ $(function() {
 
 	}
 
-	stand.init();
-
-
-	/*
-	$('.find-supper').typeahead('destroy');
-
-	
-	$('.find-supper').typeahead([
-	{
-		hint: false,
-		name: 'find-supper',
-		//prefetch: 'search.json',
-		prefetch: {
-			url: 'search.json',
-    	//url: 'http://twitter.github.io/typeahead.js/data/countries.json',
-    	ttl: 1 // in milliseconds
-		},  
-		template: [                                                                 
-        '<a style="" href="{{href}}">{{title}}</a>'
-    ].join(''),                                                                 
-    engine: Hogan
-	}
-	]);
-
-	$('.find-supper').on('typeahead:selected', function (e, datum) {
-    //console.log(datum);
-    window.location.href = datum.href;
-	});
-	*/
+	bus.init();
 
 });
