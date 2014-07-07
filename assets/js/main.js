@@ -173,6 +173,7 @@ $(function() {
 			var api = {  }
 			var tmpl = Handlebars.compile( $('#stand-loading-stop-times-tmpl').html() );
 	    $('#stop-times').html(tmpl( {api:api} ));
+	    $('#stop-times-title').html('');
 
 			$.ajax({ 
 	        url: _self.config.rest+'stop/'+this.rid+'/'+this.did+'/'+this.sid+'/'+stop
