@@ -130,16 +130,7 @@
 			    </div>
 			    <div id="trip-id-{{trip_id}}" class="panel-collapse collapse">
 			      <div class="panel-body">
-			      	<h3>
-			      		<b>{{depart.departure_time_formatted}}</b>
-			          <small>Depart {{depart.stop_name}}</small>
-			          <br>
-			          <b>{{arrive.arrival_time_formatted}}</b>
-			          <small>Arrive {{arrive.stop_name}}</small>
-			        </h3>
-
-			        <hr>
-
+			      	
 			      	<ul class="list-unstyled">
 			    		{{#each times}}
 			    			<li>
@@ -148,6 +139,7 @@
 			    			</li>
 			    		{{/each}}
 			    		</ul>
+			      
 			      </div>
 			    </div>
 			  </div>
