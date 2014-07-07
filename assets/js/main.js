@@ -31,11 +31,13 @@ $(function() {
 			});
 
 			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
-				console.log($(this).val());
+				//console.log($(this).val());
+				_self.getRoute();
 			});
 
 			$('body').on('change', 'input[name=stand-service]:radio', function(e) {
-				console.log($(this).val());
+				//console.log($(this).val());
+				_self.getRoute();
 			});
 
 			
@@ -104,6 +106,12 @@ $(function() {
 		},
 
 		getRoute: function(rid) {
+			if ( rid ) { 
+				this.rid = rid;
+			} else {
+				rid = this.rid;
+			}
+			
 			var api = {}
 			var tmpl = Handlebars.compile( $('#stand-loading-tmpl').html() );
       $('#stand-app').html(tmpl( {api:api} ));
