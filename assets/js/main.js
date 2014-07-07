@@ -111,29 +111,37 @@ $(function() {
 			} else {
 				rid = this.rid;
 			}
-			
-			var api = {}
-			var tmpl = Handlebars.compile( $('#stand-loading-tmpl').html() );
-      $('#stand-app').html(tmpl( {api:api} ));
 
-			$.ajax({ 
-        url: _self.config.rest+'timetable/'+rid+'/1'
-        ,data: {  }
-      })
-      .done(function(obj) {
-      	var api = obj;
-      	api.params = _self.params;
+			var did = $('input[name=stand-direction]:radio').val();
+			var sid = $('input[name=stand-service]:radio').val();
 
-        var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
-        $('#stand-app').html(tmpl( {api:api} ));
-      })
-      .fail(function() {
-      	error = { msg: 'Could not load route.' }
-      	_self.throwError(error);
-      })
-      .always(function() {
-      });
-			
+			console.log(did);
+			console.log(sid);
+
+			if ( rid ) { 
+
+				var api = {}
+				var tmpl = Handlebars.compile( $('#stand-loading-tmpl').html() );
+	      $('#stand-app').html(tmpl( {api:api} ));
+
+				$.ajax({ 
+	        url: _self.config.rest+'timetable/'+rid+'/1'
+	        ,data: {  }
+	      })
+	      .done(function(obj) {
+	      	var api = obj;
+	      	api.params = _self.params;
+
+	        var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
+	        $('#stand-app').html(tmpl( {api:api} ));
+	      })
+	      .fail(function() {
+	      	error = { msg: 'Could not load route.' }
+	      	_self.throwError(error);
+	      })
+	      .always(function() {
+	      });
+			}
 
 		}
 
