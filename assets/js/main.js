@@ -121,9 +121,6 @@ $(function() {
 				this.sid = $('input[name=stand-service]:radio').val();
 			}
 
-			console.log(this.did);
-			console.log(this.sid);
-
 			if ( rid ) { 
 
 				var api = {}
@@ -131,7 +128,7 @@ $(function() {
 	      $('#stand-app').html(tmpl( {api:api} ));
 
 				$.ajax({ 
-	        url: _self.config.rest+'timetable/'+rid+'/1'
+	        url: _self.config.rest+'timetable/'+rid+'/'+this.did+'/'+this.sid
 	        ,data: {  }
 	      })
 	      .done(function(obj) {
