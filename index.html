@@ -134,8 +134,10 @@
 			      	<ul class="list-unstyled">
 			    		{{#each times}}
 			    			<li>
-			    				<b>{{departure_time_formatted}}</b> 
-			    				<small>{{stop_name}}</small>
+			    				{{#if major_stop}}<h3>{{/if}}
+			    					<b>{{departure_time_formatted}}</b> 
+				    				<small>{{stop_name}}</small>
+			    				{{#if major_stop}}</h3>{{/if}}
 			    			</li>
 			    		{{/each}}
 			    		</ul>
