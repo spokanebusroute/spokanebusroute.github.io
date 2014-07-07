@@ -282,13 +282,13 @@
   	<script id="stand-stop-times-tmpl" type="text/x-handlebars-template">
   	{{#with api}}
   		<h2>
-  			{{route.route_short_name}} <small>route.route_long_name</small>
+  			{{route.route_short_name}} <small>{{route.route_long_name}}</small>
   		</h2>
   		<h3>{{stop.stop_name}}</h3>
   		<ul class="list-unstyled">
   		{{#each times}}
   			<li>
-  				{{departure_time_formatted}}
+  				<b>{{departure_time_formatted}}</b>
   			</li>
   		{{/each}}
   		</ul>
