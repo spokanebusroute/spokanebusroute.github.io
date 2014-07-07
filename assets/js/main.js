@@ -13,9 +13,16 @@ $(function() {
 				rest: 'http://bus.seangirard.com/api/'
 			}
 
+			this.splashScreen();
+
 			this.bindEvents();
 			this.loadParams();
 			
+		},
+
+		splashScreen: function() {
+			var tmpl = Handlebars.compile( $('#stand-loading-routes-tmpl').html() );
+	     $('#stand-app').html(tmpl( {} ));
 		},
 
 		throwError: function(error) {
@@ -124,7 +131,7 @@ $(function() {
 			if ( rid ) { 
 
 				var api = {}
-				var tmpl = Handlebars.compile( $('#stand-loading-tmpl').html() );
+				var tmpl = Handlebars.compile( $('#stand-loading-route-tmpl').html() );
 	      $('#stand-app').html(tmpl( {api:api} ));
 
 				$.ajax({ 
