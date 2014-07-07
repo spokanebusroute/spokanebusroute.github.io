@@ -169,9 +169,12 @@ $(function() {
 
 		},
 
-		getStopTimes: function(sid) {
+		getStopTimes: function(stop) {
 			$('#stop-times').html('Loading stop times&hellip;');
-			console.log(sid);
+			console.log(this.rid);
+			console.log(this.did);
+			console.log(this.sid);
+			console.log(this.stop);
 		}
 
 
