@@ -263,7 +263,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title">Stop Times</h4>
+		        <h4 class="modal-title" id="stop-modal-title">Stop Times</h4>
 		      </div>
 		      <div class="modal-body">
 		        <div id="stop-times"></div>
@@ -279,11 +279,16 @@
   	Loading&hellip;
   	</script> 
 
-  	<script id="stand-stop-times-tmpl" type="text/x-handlebars-template">
+		<script id="stand-stop-times-title-tmpl" type="text/x-handlebars-template">
   	{{#with api}}
   		<h2>
   			{{route.route_short_name}} <small>{{route.route_long_name}}</small>
   		</h2>
+  	{{/with}}
+  	</script> 
+
+  	<script id="stand-stop-times-tmpl" type="text/x-handlebars-template">
+  	{{#with api}}
   		<h3>{{stop.stop_name}}</h3>
   		<ul class="nav nav-pills">
   		{{#each times}}

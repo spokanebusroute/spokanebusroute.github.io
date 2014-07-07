@@ -183,6 +183,8 @@ $(function() {
 	      	api.params = _self.params;
 	        var tmpl = Handlebars.compile( $('#stand-stop-times-tmpl').html() );
 	        $('#stop-times').html(tmpl( {api:api} ));
+	        var tmpl = Handlebars.compile( $('#stand-stop-times-title-tmpl').html() );
+	        $('#stop-times-title').html(tmpl( {api:api} ));
 	      })
 	      .fail(function() {
 	      	error = { msg: 'Could not load stop.' }
