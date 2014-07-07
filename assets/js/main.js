@@ -30,7 +30,7 @@ $(function() {
 				_self.getRoute(hash.substring(1));
 			});
 
-			$('body').on('change', 'input[name=someRadioGroup]:radio', function(e) {
+			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
 				console.log($this.val());
 			});
 
