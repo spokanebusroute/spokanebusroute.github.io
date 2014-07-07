@@ -1,1 +1,225 @@
-Spokane Bus Route
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stand</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/assets/js/vendor/modernizr-2.7.1.min.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- header -->
+
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <!--
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      -->
+		      <a class="navbar-brand" href="/">
+		       	<i class="glyphicon glyphicon-random text-success" style="margin-top:0;"></i>&nbsp;
+		       	<span class="text-primary">Spokane Timetable App</span>
+		      </a>
+		    </div>
+		    <!--
+		    <div class="collapse navbar-collapse">
+		      <ul class="nav navbar-nav">
+		        <li class=""><a href="/about/">About</a></li>
+		      </ul>
+		    </div>--><!--/.nav-collapse -->
+		  </div>
+		</div>
+
+    <!-- content -->
+   
+    <div class="container" style="font-size:18px;">
+
+    	<div id="stand-tools">
+    	</div>
+
+    	<div id="stand-app">
+  	  	Loading&hellip;
+	    </div>
+
+	    <script id="stand-tools-tmpl" type="text/x-handlebars-template">
+    	{{#with api}}
+
+    	<div class="row">
+    		<div class="col-md-6">
+		    	<div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
+					  <label class="btn btn-success active">
+					    <input type="radio" name="stand-direction" id="stand-direction-inbound" checked> <em>To</em> Downtown
+					  </label>
+					  <label class="btn btn-success">
+					    <input type="radio" name="stand-direction" id="stand-direction-outbound"> <em>From</em> Downtown
+					  </label>
+					</div>
+				</div><!-- /.col -->
+				<div class="col-md-6">
+
+				  <div class="btn-group input-group btn-group-justified" style="margin-bottom:12px;" data-toggle="buttons">
+					  <label class="btn btn-primary active">
+					    <input type="radio" name="stand-service" id="stand-service-weekday" checked> Weekdays
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="stand-service" id="stand-service-saturday"> Saturdays
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="stand-service" id="stand-service-sunday"> Sundays<span class="hidden-xs">/Holidays</span>
+					  </label>
+					</div>
+
+				</div><!-- /.col -->
+	    </div><!-- /.row -->
+    	{{/with}}
+    	</script> 
+    	
+    	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
+    	{{#each api}}
+    		<a href="#{{route_short_name}}" class="btn btn-block btn-default stand-route">
+    			<span class=""><b>{{route_short_name}}</b> - {{route_long_name}}</span></a>
+    	{{/each}}
+    	</script> 
+
+    	<script id="stand-route-tmpl" type="text/x-handlebars-template">
+    	{{#with api}}
+    	<h2>
+    		{{route.route_short_name}} 
+    		<small>{{route.route_long_name}}</small>
+    	</h2>	
+
+	    <div class="panel-group" id="trips-accordion">
+	    {{#each trips}}
+	    	<div class="panel panel-warning">
+			    <div class="panel-heading">
+						<h3 class="panel-title">
+							{{depart.departure_time_formatted}}
+		          <small>Depart</small>
+		          {{arrive.arrival_time_formatted}}
+		          <small>Arrive</small>
+		          <span class="hidden-xs">{{trip_headsign}}</span>
+						</h4>			        
+		        <a class="btn btn-lg btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
+		          Timetable
+		          <span class="caret"></span>
+		        </a>
+			    </div>
+			    <div id="trip-id-{{trip_id}}" class="panel-collapse collapse">
+			      <div class="panel-body">
+			      	<h3>
+			      		<b>{{depart.departure_time_formatted}}</b>
+			          <small>Depart {{depart.stop_name}}</small>
+			          <br>
+			          <b>{{arrive.arrival_time_formatted}}</b>
+			          <small>Arrive {{arrive.stop_name}}</small>
+			        </h3>
+
+			        <hr>
+
+			      	<ul class="list-unstyled">
+			    		{{#each times}}
+			    			<li>
+			    				<b>{{departure_time_formatted}}</b> 
+			    				<small>{{stop_name}}</small>
+			    			</li>
+			    		{{/each}}
+			    		</ul>
+			      </div>
+			    </div>
+			  </div>
+	    {{/each}}
+	    </div><!-- /#trips-accordion -->
+
+    	{{/with}}
+    	</script> 
+
+    	<script id="stand-loading-tmpl" type="text/x-handlebars-template">
+    	<div class="panel panel-primary">
+    		<div class="panel-heading">
+    			<h4>Loading</h4>
+    		</div>
+		    <div class="panel-body">
+		    	<p>
+		    		Please wait&hellip;
+		    	</p>
+		    </div>
+		    <div class="panel-footer">
+		    	<a href="/" class="btn btn-default">Cancel</a>
+		    </div>
+    	</div>
+    	</script> 
+
+    	<script id="stand-error-tmpl" type="text/x-handlebars-template">
+    	<div class="panel panel-warning">
+    		<div class="panel-heading">
+    			<h4>Error</h4>
+    		</div>
+		    <div class="panel-body">
+		    	<p>
+		    		{{error.msg}}
+		    	</p>
+		    	<p>
+		    	  Please check that you have a network connection.
+		    	</p>
+		    </div>
+		    <div class="panel-footer">
+		    	<a href="/" class="btn btn-default">Reload</a>
+		    </div>
+    	</div>
+    	</script>  
+    
+      
+    </div><!-- /.container -->
+
+    <hr>
+
+    <div class="container">
+    	<p class="text-center text-muted">
+    		Stand is <a href="http://github.com/seangirard">Sean's</a> idea.
+        <a href="http://github.com/seangirard/stand">Fork it on github</a>.
+    	</p>
+    </div><!-- /.container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/typeahead.min.js"></script>
+    <script src="/assets/js/vendor/handlebars.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+  </body>
+</html>
+
