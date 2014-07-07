@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect specific files  
+  #RewriteRule ^(ipn)$ ipn/
+  #RewriteRule ^(ipn/)$ ipn.php [L]
+
+  # Rewrite Exclusions
+  RewriteRule ^(api) - [L]
+
+  # Enable url rewriting in subdirectories
+  #RewriteBase /checkin/
+
+  RewriteRule ^(.*)/$ $1 [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  #RewriteRule ^/?([A-Za-z0-9-/]+)/?$ index.php?page=$1 [QSA,L]
+  RewriteRule ^(.*)$ index.php?endpoint=$1 [QSA,L]
+
+</IfModule>
