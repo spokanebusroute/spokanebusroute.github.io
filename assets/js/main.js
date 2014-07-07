@@ -39,7 +39,7 @@ $(function() {
 
 			$('#stop-modal').on('show.bs.modal', function (e) {
 				var $trigger = $(e.relatedTarget);
-			  console.log($trigger.data('stop-id'));
+			  _self.getStopTimes($trigger.data('stop-id'));
 			});
 
 			$('body').on('change', 'input[name=stand-direction]:radio', function(e) {
@@ -167,6 +167,11 @@ $(function() {
 	      });
 			}
 
+		},
+
+		getStopTimes: function(sid) {
+			$('#stop-times').html('Loading stop times&hellip;');
+			console.log(sid);
 		}
 
 
