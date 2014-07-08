@@ -110,13 +110,12 @@
     	{{#with api}}
     	<h2>
     		{{route.route_short_name}} 
-    		<small>{{route.route_long_name}}</small>
+    		<small>
+    			{{route.route_long_name}}
+    			<a class="pull-right" href="{{route.route_url}}">Link to route on STA website</a> 
+		    		<span class="text-muted">&rarr;</a>
+    		</small>
     	</h2>	
-
-    	<p class="text-right">
-    		<a href="{{route.route_url}}">Link to route on STA website</a> 
-    		<span class="text-muted">&rarr;</a>
-    	</p>
 
     	<div class="row">
     		<div class="col-md-6">
