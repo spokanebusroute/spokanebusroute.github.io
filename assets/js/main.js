@@ -191,7 +191,7 @@ $(function() {
 	      	var api = obj;
 	      	api.params = _self.params;
 	      	api.control = _self.getControl();
-	      	console.log(api);
+
 	        var tmpl = Handlebars.compile( $('#bus-route-tmpl').html() );
 	        $('#bus-app').html(tmpl( {api:api} ));
 	      })
