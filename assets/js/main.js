@@ -105,9 +105,9 @@ $(function() {
 
 		getControl: function() {
 			//reset
-			this.control = {rid: this.control.rid
-											did: this.control.did
-											sid: this.control.sid
+			this.control = { rid: this.control.rid
+											,did: this.control.did
+											,sid: this.control.sid
 											};
 
 			var control = this.control;
