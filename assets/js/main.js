@@ -127,7 +127,6 @@ $(function() {
 					break;
 			}
 
-			console.log(control);
 			return control;
 		},
 
