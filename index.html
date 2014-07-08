@@ -331,6 +331,35 @@
   	<script id="bus-stop-times-tmpl" type="text/x-handlebars-template">
   	{{#with api}}
   		<h4 class="text-danger">{{stop.stop_name}}</h4>
+  		
+  		<div class="row">
+    		<div class="col-xs-6">
+		    	<h5 class="text-success text-center">
+		  			<em>
+			  		{{#if control.inbound}}
+			  			To
+			  		{{else}}
+			  			From
+			  		{{/if}}
+			  		</em>
+		  			Downtown
+		    	</h5>
+		    </div><!-- /.col -->
+		    <div class="col-xs-6">
+		    	<h5 class="text-primary text-center">
+		  		{{#if control.weekday}}
+		  			Weekdays
+		  		{{/if}}
+		  		{{#if control.saturday}}
+		  			Saturdays
+		  		{{/if}}
+		  		{{#if control.sunday}}
+		  			Sundays / Holidays
+		  		{{/if}}
+		    	</h5>
+		    </div><!-- /.col -->
+		  </div><!-- /.row -->
+
   		<ul class="nav nav-pills">
   		{{#each times}}
   			<li>
