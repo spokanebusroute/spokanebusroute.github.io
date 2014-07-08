@@ -71,7 +71,6 @@ $(function() {
       	_self.loadTools();
 
       	var hash = window.location.hash.substring(1);
-      	console.log(hash);
       	if ( hash ) {
       		switch ( hash ) {
       			case 'top':
