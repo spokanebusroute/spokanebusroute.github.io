@@ -129,6 +129,18 @@
   			Downtown
     	</h4>
 
+    	<h4 class="text-primary">
+  		{{#if control.weekday}}
+  			Weekdays
+  		{{/if}}
+  		{{#if control.saturday}}
+  			Saturdays
+  		{{/if}}
+  		{{#if control.sunday}}
+  			Sundays/Holidays
+  		{{/if}}
+    	</h4>
+
 	    <div class="panel-group" id="trips-accordion">
 	    {{#each trips}}
 	    	<div class="panel panel-warning">
