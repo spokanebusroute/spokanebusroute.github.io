@@ -46,13 +46,13 @@ $(function() {
 
 			$('body').on('change', 'input[name=bus-direction]:radio', function(e) {
 				//console.log($(this).val());
-				_self.did = $(this).val();
+				_self.control.did = $(this).val();
 				_self.getRoute();
 			});
 
 			$('body').on('change', 'input[name=bus-service]:radio', function(e) {
 				//console.log($(this).val());
-				_self.sid = $(this).val();
+				_self.control.sid = $(this).val();
 				_self.getRoute();
 			});
 
@@ -108,13 +108,9 @@ $(function() {
 
 			switch ( control.did ) {
 				case '0':
-				case 0:
-				case false:
 					control.outbound = true;
 					break;
 				case '1':
-				case 1:
-				case true:
 					control.inbound = true;
 					break;
 			}
