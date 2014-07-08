@@ -141,9 +141,12 @@ $(function() {
 		showRoutes: function() {
 			var tmpl = Handlebars.compile( $('#bus-routes-tmpl').html() );
       $('#bus-app').html(tmpl( {api:_self.config.routes} ));
+      $('.pages').show();
 		},
 
 		getRoutes: function() {
+			$('.pages').hide();
+
 			if ( _self.config.routes ) {
 				_self.showRoutes();
 			} else {
@@ -180,6 +183,7 @@ $(function() {
 			}
 
 			if ( rid ) { 
+				$('.pages').hide();
 
 				var api = { rid:rid }
 				var tmpl = Handlebars.compile( $('#bus-loading-route-tmpl').html() );
@@ -196,6 +200,8 @@ $(function() {
 
 	        var tmpl = Handlebars.compile( $('#bus-route-tmpl').html() );
 	        $('#bus-app').html(tmpl( {api:api} ));
+
+	        $('.pages').show();
 	      })
 	      .fail(function() {
 	      	error = { msg: 'Could not load route.' }
