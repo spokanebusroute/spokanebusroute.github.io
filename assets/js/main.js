@@ -107,10 +107,14 @@ $(function() {
 			var control = this.control;
 
 			switch ( control.did ) {
+				case '0':
 				case 0:
+				case false:
 					control.outbound = true;
 					break;
+				case '1':
 				case 1:
+				case true:
 					control.inbound = true;
 					break;
 			}
@@ -126,6 +130,7 @@ $(function() {
 					control.sunday = true;
 					break;
 			}
+
 			console.log(control);
 			return control;
 		},
