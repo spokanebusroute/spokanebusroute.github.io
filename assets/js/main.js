@@ -70,18 +70,18 @@ $(function() {
 
       	_self.loadTools();
 
-      	var hash = window.location.hash;
+      	var hash = window.location.hash.substring(1);
       	if ( hash ) {
       		switch ( hash ) {
       			case 'top':
-      			
       			case 'help':
       			case 'about':
       			case 'disclaimer':
       			case 'stop-modal':
+      				_self.getRoutes();
       				break;
       			default:
-      				_self.getRoute(hash.substring(1));
+      				_self.getRoute(hash);
       				break;
       		}
       	} else {
