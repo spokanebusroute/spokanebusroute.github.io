@@ -116,13 +116,13 @@ $(function() {
 			}
 
 			switch ( control.sid ) {
-				case 1:
+				case '1':
 					control.weekday = true;
 					break;
-				case 2:
+				case '2':
 					control.saturday = true;
 					break;
-				case 3:
+				case '3':
 					control.sunday = true;
 					break;
 			}
