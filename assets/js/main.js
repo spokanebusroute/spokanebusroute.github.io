@@ -13,6 +13,8 @@ $(function() {
 				rest: 'http://bus.seangirard.com/api/'
 			}
 
+			this.control = {}
+
 			this.splashScreen();
 
 			this.bindEvents();
@@ -101,6 +103,17 @@ $(function() {
       $('#bus-tools').html(tmpl( {api:api} ));
 		},
 
+		getControl: function() {
+			var control = this.control;
+			if ( control.did = 0 ) {
+				control.inbound = true;
+			} else {
+				control.outbound = true;
+			}
+			console.log(control);
+			return control;
+		},
+
 		showRoutes: function() {
 			var tmpl = Handlebars.compile( $('#bus-routes-tmpl').html() );
       $('#bus-app').html(tmpl( {api:_self.config.routes} ));
@@ -130,16 +143,16 @@ $(function() {
 
 		getRoute: function(rid) {
 			if ( rid ) { 
-				this.rid = rid;
+				this.control.rid = rid;
 			} else {
-				rid = this.rid;
+				rid = this.control.rid;
 			}
 
-			if ( !this.did ) {
-				this.did = $('input[name=bus-direction]:radio').val();
+			if ( !this.control.did ) {
+				this.control.did = $('input[name=bus-direction]:radio').val();
 			}
-			if (!this.sid) {
-				this.sid = $('input[name=bus-service]:radio').val();
+			if (!this.control.sid) {
+				this.control.sid = $('input[name=bus-service]:radio').val();
 			}
 
 			if ( rid ) { 
@@ -149,12 +162,13 @@ $(function() {
 	      $('#bus-app').html(tmpl( {api:api} ));
 
 				$.ajax({ 
-	        url: _self.config.rest+'timetable/'+rid+'/'+this.did+'/'+this.sid
+	        url: _self.config.rest+'timetable/'+rid+'/'+this.control.did+'/'+this.control.sid
 	        ,data: {  }
 	      })
 	      .done(function(obj) {
 	      	var api = obj;
 	      	api.params = _self.params;
+	      	api.control = _self.getControl();
 
 	        var tmpl = Handlebars.compile( $('#bus-route-tmpl').html() );
 	        $('#bus-app').html(tmpl( {api:api} ));
@@ -176,12 +190,14 @@ $(function() {
 	    $('#stop-times-title').html('');
 
 			$.ajax({ 
-	        url: _self.config.rest+'stop/'+this.rid+'/'+this.did+'/'+this.sid+'/'+stop
+	        url: _self.config.rest+'stop/'+this.control.rid+'/'+this.control.did+'/'+this.control.sid+'/'+stop
 	        ,data: {  }
 	      })
 	      .done(function(obj) {
 	      	var api = obj;
 	      	api.params = _self.params;
+	      	api.control = _self.getControl();
+
 	        var tmpl = Handlebars.compile( $('#bus-stop-times-tmpl').html() );
 	        $('#stop-times').html(tmpl( {api:api} ));
 	        var tmpl = Handlebars.compile( $('#bus-stop-times-title-tmpl').html() );
