@@ -105,10 +105,26 @@ $(function() {
 
 		getControl: function() {
 			var control = this.control;
-			if ( control.did = 0 ) {
-				control.inbound = true;
-			} else {
-				control.outbound = true;
+
+			switch ( control.did ) {
+				case 0:
+					control.outbound = true;
+					break;
+				case 1:
+					control.inbound = true;
+					break;
+			}
+
+			switch ( control.sid ) {
+				case 1:
+					control.weekday = true;
+					break;
+				case 2:
+					control.saturday = true;
+					break;
+				case 3:
+					control.sunday = true;
+					break;
 			}
 			console.log(control);
 			return control;
