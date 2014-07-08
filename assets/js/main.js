@@ -73,6 +73,7 @@ $(function() {
       	var hash = window.location.hash;
       	if ( hash ) {
       		switch ( hash ) {
+      			case 'top':
       			case 'help':
       			case 'about':
       			case 'disclaimer':
