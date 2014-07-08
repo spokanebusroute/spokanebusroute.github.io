@@ -112,7 +112,6 @@
     		{{route.route_short_name}} 
     		<small>
     			{{route.route_long_name}}
-    			<a class="pull-right hidden-xs" href="{{route.route_url}}">Link to route on STA website &rarr;</a>
     		</small>
     	</h2>	
 
@@ -202,8 +201,9 @@
 	    {{/each}}
 	    </div><!-- /#trips-accordion -->
 
-	    <p>
-	    	<a class="pull-right" href="{{route.route_url}}">Link to route on STA website &rarr;</a>
+	    <p class="text-center text-muted">
+	    	<a href="{{route.route_url}}">Link to route on STA website</a>
+	    	&rarr;
 	    </p>
 
     	{{/with}}
